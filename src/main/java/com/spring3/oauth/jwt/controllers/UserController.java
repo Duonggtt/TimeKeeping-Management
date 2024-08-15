@@ -35,7 +35,7 @@ public class UserController {
     private  AuthenticationManager authenticationManager;
 
     @PostMapping(value = "/save")
-    public ResponseEntity saveUser(@RequestBody UserRequest userRequest) {
+    public ResponseEntity<?> saveUser(@RequestBody UserRequest userRequest) {
         try {
             UserResponse userResponse = userService.saveUser(userRequest);
             return ResponseEntity.ok(userResponse);
@@ -45,7 +45,7 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public ResponseEntity getAllUsers() {
+    public ResponseEntity<?> getAllUsers() {
         try {
             List<UserResponse> userResponses = userService.getAllUser();
             return ResponseEntity.ok(userResponses);
