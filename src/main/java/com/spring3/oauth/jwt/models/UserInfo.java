@@ -28,6 +28,6 @@ public class UserInfo {
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<UserRole> roles = new HashSet<>();
-
+//s
 
 }
