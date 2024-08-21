@@ -14,7 +14,7 @@ import java.util.Set;
 @ToString
 public class UserRequest {
 
-    private Long id;
+    private Integer id;
     private String username;
     private String password;
     private Set<Role> roles;

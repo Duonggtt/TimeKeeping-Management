@@ -1,5 +1,6 @@
 package com.spring3.oauth.jwt.entity;
 
+import com.spring3.oauth.jwt.entity.enums.RecordStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,12 +19,21 @@ public class Attendance_record {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
-    private long id;
+    private Integer id;
 
-    private LocalDateTime checkIn;
-    private LocalDateTime checkOut;
+    @Column(name = "checked_in")
+    private LocalDateTime checkedIn;
+
+    @Column(name = "checked_out")
+    private LocalDateTime checkedOut;
     private LocalDateTime date;
+
+    @Column(name = "total_hours")
     private BigDecimal totalHours;
+
+    @Column(name = "total_overtime")
     private BigDecimal totalOvertime;
+
+    private RecordStatus status;
 
 }

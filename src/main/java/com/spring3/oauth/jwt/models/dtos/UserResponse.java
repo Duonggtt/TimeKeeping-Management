@@ -14,7 +14,7 @@ import java.util.Set;
 @ToString
 public class UserResponse {
 
-    private Long id;
+    private Integer id;
     private String username;
     private Set<Role> roles;
 
