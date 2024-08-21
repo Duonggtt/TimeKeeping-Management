@@ -1,9 +1,10 @@
-package com.spring3.oauth.jwt.services;
+package com.spring3.oauth.jwt.services.impl;
 
-import com.spring3.oauth.jwt.dtos.UserRequest;
-import com.spring3.oauth.jwt.dtos.UserResponse;
-import com.spring3.oauth.jwt.models.UserInfo;
+import com.spring3.oauth.jwt.entity.User;
+import com.spring3.oauth.jwt.models.dtos.UserRequest;
+import com.spring3.oauth.jwt.models.dtos.UserResponse;
 import com.spring3.oauth.jwt.repositories.UserRepository;
+import com.spring3.oauth.jwt.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,18 +40,18 @@ public class UserServiceImpl implements UserService {
 //        UserDetails userDetail = (UserDetails) authentication.getPrincipal();
 //        String usernameFromAccessToken = userDetail.getUsername();
 //
-//        UserInfo currentUser = userRepository.findByUsername(usernameFromAccessToken);
+//        User currentUser = userRepository.findByUsername(usernameFromAccessToken);
 
-        UserInfo savedUser = null;
+        User savedUser = null;
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String rawPassword = userRequest.getPassword();
         String encodedPassword = encoder.encode(rawPassword);
 
-        UserInfo user = modelMapper.map(userRequest, UserInfo.class);
+        User user = modelMapper.map(userRequest, User.class);
         user.setPassword(encodedPassword);
         if(userRequest.getId() != null){
-            UserInfo oldUser = userRepository.findFirstById(userRequest.getId());
+            User oldUser = userRepository.findFirstById(userRequest.getId());
             if(oldUser != null){
                 oldUser.setId(user.getId());
                 oldUser.setPassword(user.getPassword());
@@ -76,14 +77,14 @@ public class UserServiceImpl implements UserService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetail = (UserDetails) authentication.getPrincipal();
         String usernameFromAccessToken = userDetail.getUsername();
-        UserInfo user = userRepository.findByUsername(usernameFromAccessToken);
+        User user = userRepository.findByUsername(usernameFromAccessToken);
         UserResponse userResponse = modelMapper.map(user, UserResponse.class);
         return userResponse;
     }
 
     @Override
     public List<UserResponse> getAllUser() {
-        List<UserInfo> users = (List<UserInfo>) userRepository.findAll();
+        List<User> users = (List<User>) userRepository.findAll();
         Type setOfDTOsType = new TypeToken<List<UserResponse>>(){}.getType();
         List<UserResponse> userResponses = modelMapper.map(users, setOfDTOsType);
         return userResponses;

@@ -1,6 +1,6 @@
-package com.spring3.oauth.jwt.dtos;
+package com.spring3.oauth.jwt.models.dtos;
 
-import com.spring3.oauth.jwt.models.UserRole;
+import com.spring3.oauth.jwt.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,11 +12,12 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class UserResponse {
+public class UserRequest {
 
     private Long id;
     private String username;
-    private Set<UserRole> roles;
+    private String password;
+    private Set<Role> roles;
 
 
 }

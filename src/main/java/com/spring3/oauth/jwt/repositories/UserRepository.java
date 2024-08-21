@@ -1,14 +1,14 @@
 package com.spring3.oauth.jwt.repositories;
 
 import com.spring3.oauth.jwt.helpers.RefreshableCRUDRepository;
-import com.spring3.oauth.jwt.models.UserInfo;
+import com.spring3.oauth.jwt.entity.User;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface UserRepository extends RefreshableCRUDRepository<UserInfo, Long> {
+public interface UserRepository extends RefreshableCRUDRepository<User, Long> {
 
-   public UserInfo findByUsername(String username);
-   UserInfo findFirstById(Long id);
+   public User findByUsername(String username);
+   User findFirstById(Long id);
 
 }

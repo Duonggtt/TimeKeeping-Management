@@ -1,7 +1,7 @@
 package com.spring3.oauth.jwt.controllers;
 
-import com.spring3.oauth.jwt.dtos.*;
 import com.spring3.oauth.jwt.models.RefreshToken;
+import com.spring3.oauth.jwt.models.dtos.*;
 import com.spring3.oauth.jwt.services.JwtService;
 import com.spring3.oauth.jwt.services.RefreshTokenService;
 import com.spring3.oauth.jwt.services.UserService;
@@ -95,7 +95,7 @@ public class UserController {
     public JwtResponseDTO refreshToken(@RequestBody RefreshTokenRequestDTO refreshTokenRequestDTO){
         return refreshTokenService.findByToken(refreshTokenRequestDTO.getToken())
                 .map(refreshTokenService::verifyExpiration)
-                .map(RefreshToken::getUserInfo)
+                .map(RefreshToken::getUser)
                 .map(userInfo -> {
                     String accessToken = jwtService.GenerateToken(userInfo.getUsername());
                     return JwtResponseDTO.builder()

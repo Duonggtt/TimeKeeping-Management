@@ -1,4 +1,4 @@
-package com.spring3.oauth.jwt.dtos;
+package com.spring3.oauth.jwt.models.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

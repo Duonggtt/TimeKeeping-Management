@@ -1,6 +1,6 @@
 package com.spring3.oauth.jwt.helpers;
 
-import com.spring3.oauth.jwt.models.UserInfo;
+import com.spring3.oauth.jwt.entity.User;
 import com.spring3.oauth.jwt.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         logger.debug("Entering in loadUserByUsername Method...");
-        UserInfo user = userRepository.findByUsername(username);
+        User user = userRepository.findByUsername(username);
         if(user == null){
             logger.error("Username not found: " + username);
             throw new UsernameNotFoundException("could not found user..!!");

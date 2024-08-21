@@ -1,5 +1,6 @@
 package com.spring3.oauth.jwt.models;
 
+import com.spring3.oauth.jwt.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,6 +32,6 @@ public class RefreshToken {
 
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private UserInfo userInfo;
+    private User user;
 
 }

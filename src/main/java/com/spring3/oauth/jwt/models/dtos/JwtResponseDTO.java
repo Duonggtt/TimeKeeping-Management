@@ -1,12 +1,17 @@
-package com.spring3.oauth.jwt.dtos;
+package com.spring3.oauth.jwt.models.dtos;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RefreshTokenRequestDTO {
+@Builder
+public class JwtResponseDTO {
+
+    private String accessToken;
     private String token;
 }

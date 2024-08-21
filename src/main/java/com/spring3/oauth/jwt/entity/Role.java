@@ -1,4 +1,4 @@
-package com.spring3.oauth.jwt.models;
+package com.spring3.oauth.jwt.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "ROLES")
-public class UserRole {
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
